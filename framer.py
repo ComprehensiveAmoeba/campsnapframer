@@ -128,7 +128,7 @@ if uploaded_files:
 
     st.markdown("---")
     st.subheader("📲 Instagram Description")
-    instadesc = "Shot on my Camp Snap and framed with Camp Snap Framer from [campsnaptools.com] #campsnaptools"
+    instadesc = "Shot on my Camp Snap and framed with Camp Snap Framer from [campsnaptools.com](https://campsnaptools.com)"
     st.code(instadesc, language="markdown")
 
     if len(uploaded_files) == 1:
@@ -152,7 +152,7 @@ if uploaded_files:
                     elif date_source == "None":
                         meta.pop("Date", None)
                     framed = process_image(img, canvas_size, scale, x_offset, y_offset,
-                                           meta, description, filter_name, show_date=show_date)
+                                           meta, description, filter_name, show_date=(date_source != "None"))
                     img_byte_arr = io.BytesIO()
                     ext = os.path.splitext(uploaded_file.name)[1].lower().replace(".", "")
                     save_format = "JPEG" if ext == "jpg" else ext.upper()
